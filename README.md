@@ -20,7 +20,7 @@ Inference
 python test_eraser.py
 ```
 
-Check the Inference code
+Check the Inference code and [Colab Notebook](https://colab.research.google.com/drive/14PQwrYmVBM1OIjYnWamcrTRcpHAZP9lX#scrollTo=fG8sB4c_j9il)
 
 ```python
 from diffusers import (
