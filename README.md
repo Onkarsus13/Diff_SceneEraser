@@ -1,13 +1,13 @@
-This is the trained model for the controlnet-stablediffusion for the scene text eraser. We have to customised the pipeline for the controlnet-stablediffusion-inpaint
+This is the trained model for the controlnet-stablediffusion for the scene text eraser. We have to customized the pipeline for the controlnet-stablediffusion-inpaint
 
 
-To trianing the model we had use the SCUT-Ensnet dataset
+To training the model we had to use the SCUT-Ensnet dataset
 
 Installation
 
 `pip install -e ".[torch]`
 
-You can able to get the changes in the official repositoy
+You can get the changes in the official repositoy
 
 Inference
 
@@ -29,18 +29,18 @@ from PIL import Image, ImageDraw
 import math
 import os
 
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 pipe = StableDiffusionControlNetSceneTextErasingPipeline.from_pretrained('controlnet_scenetext_eraser/')
 
 pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(pipe.scheduler.config)
 
-pipe.to(torch.device('cuda:1'))
+pipe.to(device)
 
 # pipe.enable_xformers_memory_efficient_attention()
 pipe.enable_model_cpu_offload()
 
-generator = torch.Generator(device="cuda:1").manual_seed(1)
+generator = torch.Generator(device).manual_seed(1)
 
 image = Image.open("<path to scene text image>").resize((512, 512))
 mask_image = Image.open('<path to the corrospoinding mask image>').resize((512, 512))
