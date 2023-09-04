@@ -7,7 +7,7 @@ Installation
 
 ```
 cd Diff_SceneTextEraser
-pip install -e ".[torch]
+pip install -e ".[torch]"
 ```
 
 You can get the changes in the official repositoy
