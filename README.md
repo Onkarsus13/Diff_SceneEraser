@@ -11,7 +11,11 @@ You can get the changes in the official repositoy
 
 Inference
 
-`python test_eraser.py`
+
+```
+cd Diff_SceneTextEraser
+python test_eraser.py
+```
 
 Check the Inference code
 
