@@ -5,7 +5,7 @@ To trianing the model we had use the SCUT-Ensnet dataset
 
 Installation
 
-`pip install .`
+`pip install -e ".[torch]`
 
 You can able to get the changes in the official repositoy
 
@@ -15,7 +15,7 @@ Inference
 
 Check the Inference code
 
-```
+```python
 from diffusers import (
     UniPCMultistepScheduler, 
     DDIMScheduler, 
