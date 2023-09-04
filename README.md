@@ -8,9 +8,10 @@ Installation
 ```
 cd Diff_SceneTextEraser
 pip install -e ".[torch]"
+pip install -e .[all,dev,notebooks]
 ```
 
-You can get the changes in the official repositoy
+You can get the changes in the official repository
 
 Inference
 
