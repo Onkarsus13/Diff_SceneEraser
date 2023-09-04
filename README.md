@@ -5,7 +5,10 @@ To training the model we had to use the SCUT-Ensnet dataset
 
 Installation
 
-`pip install -e ".[torch]`
+`
+cd Diff_SceneTextEraser
+pip install -e ".[torch]
+`
 
 You can get the changes in the official repositoy
 
@@ -13,7 +16,6 @@ Inference
 
 
 ```
-cd Diff_SceneTextEraser
 python test_eraser.py
 ```
 
