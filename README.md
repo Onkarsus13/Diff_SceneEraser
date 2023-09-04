@@ -59,4 +59,4 @@ image.save('test1.png')
 
 ```
 
-You will find the models for the repository [here](https://huggingface.co/onkarsus13/controlnet_stablediffusion_scenetextEraser/tree/main)
+You will find the models checkpoints [here](https://huggingface.co/onkarsus13/controlnet_stablediffusion_scenetextEraser/tree/main)
