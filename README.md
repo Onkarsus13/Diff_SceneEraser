@@ -5,10 +5,10 @@ To training the model we had to use the SCUT-Ensnet dataset
 
 Installation
 
-`
+```
 cd Diff_SceneTextEraser
 pip install -e ".[torch]
-`
+```
 
 You can get the changes in the official repositoy
 
