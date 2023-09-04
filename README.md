@@ -31,7 +31,9 @@ import os
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-pipe = StableDiffusionControlNetSceneTextErasingPipeline.from_pretrained('controlnet_scenetext_eraser/')
+model_path = "onkarsus13/controlnet_stablediffusion_scenetextEraser"
+
+pipe = StableDiffusionControlNetSceneTextErasingPipeline.from_pretrained(model_path)
 
 pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(pipe.scheduler.config)
 
