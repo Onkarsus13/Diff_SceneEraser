@@ -26,33 +26,21 @@ te = trans(
     timestep=timestep,
     ).sample
 
-# opt = torch.optim.Adam(trans.parameters(), lr=0.0001)
-# trans.train()
+opt = torch.optim.Adam(trans.parameters(), lr=0.0001)
+trans.train()
 
-# diff = DiffusionTransformer(transformer=trans)
-# for _ in range(20):
-
-
-#     trans.zero_grad()
-#     xx = diff._train_loss(q, torch.randn(2, 49, 512))
-#     xx[-1].mean().backward()
-#     opt.step()
-#     print(xx[-1].mean().item())
+diff = DiffusionTransformer(transformer=trans)
+for _ in range(20):
 
 
+    trans.zero_grad()
+    xx = diff._train_loss(q, torch.randn(2, 49, 512))
+    xx[-1].mean().backward()
+    opt.step()
+    print(xx[-1].mean().item())
 
 
 
-# import torch
-# from diffusers import VQDiffusionPipeline
-
-# pipeline = VQDiffusionPipeline.from_pretrained("microsoft/vq-diffusion-ithq", torch_dtype=torch.float16)
-# pipeline = pipeline.to("cuda")
-
-# output = pipeline("teddy bear playing in the pool", truncation_rate=1.0)
-
-# image = output.images[0]
-# image.save("./teddy_bear.png")
 
 
 
