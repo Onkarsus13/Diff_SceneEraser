@@ -165,7 +165,7 @@ class VQDiffusionPipeline(DiffusionPipeline):
         self,
         prompt: Union[str, List[str]],
         num_inference_steps: int = 100,
-        guidance_scale: float = 5.0,
+        guidance_scale: float = 0.3,
         truncation_rate: float = 1.0,
         num_images_per_prompt: int = 1,
         generator: Optional[Union[torch.Generator, List[torch.Generator]]] = None,
@@ -266,6 +266,7 @@ class VQDiffusionPipeline(DiffusionPipeline):
 
             # predict the un-noised image
             # model_output == `log_p_x_0`
+            print(latent_model_input.shape, prompt_embeds.shape, t)
             model_output = self.transformer(latent_model_input, encoder_hidden_states=prompt_embeds, timestep=t).sample
 
             if do_classifier_free_guidance:
@@ -281,6 +282,7 @@ class VQDiffusionPipeline(DiffusionPipeline):
             # compute the previous noisy sample x_t -> x_t-1
             sample = self.scheduler.step(model_output, timestep=t, sample=sample, generator=generator).prev_sample
 
+            print(sample.shape)
             # call the callback, if provided
             if callback is not None and i % callback_steps == 0:
                 callback(i, t, sample)

@@ -74,7 +74,6 @@ class BasicTransformerBlock(nn.Module):
                 f"`norm_type` is set to {norm_type}, but `num_embeds_ada_norm` is not defined. Please make sure to"
                 f" define `num_embeds_ada_norm` if setting `norm_type` to {norm_type}."
             )
-
         # Define 3 blocks. Each block has its own normalization layer.
         # 1. Self-Attn
         if self.use_ada_layer_norm:
@@ -333,9 +332,10 @@ class AdaLayerNorm(nn.Module):
 
     def forward(self, x, timestep):
         emb = self.linear(self.silu(self.emb(timestep)))
-        scale, shift = torch.chunk(emb, 2)
+        scale, shift = torch.chunk(emb, 2, dim=0 if x.shape[0]==1 else -1)
         x = self.norm(x) * (1 + scale) + shift
         return x
+
 
 
 class AdaLayerNormZero(nn.Module):
